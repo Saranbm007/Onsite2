@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.image.label }}:
+            {{ form.image() }} <br>
+            {% for error in form.image.errors %}
+                 <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.submit() }}
+         </p>
+    </form>
+    <div>
+        <h3>Uploaded Images</h3>
+        {% for thumbnail_name in thumbnail_names %}
+        <a href="{{ url_for('static', filename='/uploads/{}'.format(thumbnail_name)) }}">
+            <img src="{{ url_for('static', filename='/uploads/thumbnails/{}'.format(thumbnail_name)) }}" alt="">
+        </a>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
