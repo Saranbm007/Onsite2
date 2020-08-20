@@ -1,4 +1,4 @@
-# ShopEZ
+# Onsite2
 
 ## Installation
 
